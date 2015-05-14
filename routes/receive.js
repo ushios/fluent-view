@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     }
     var fn = jade.compile(data)
     var html = fn({
-      lines: [lines]
+      lines: [line]
     })
     broadcast(html)
   })
