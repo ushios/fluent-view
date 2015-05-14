@@ -10,13 +10,14 @@ router.post('/', function(req, res, next) {
   }
   
   var line = req.body
-  logMessages.push(line)
-
   var lineString = ""
   Object.keys(line).forEach(function(key) {
     var val = line[key]
     lineString += "[" + key + ":" + val + "] "
   })
+
+  
+  logMessages.push(lineString)
 
   fs.readFile('views/modules/line.jade', 'utf8', function (err, data) {
     if (err) {
