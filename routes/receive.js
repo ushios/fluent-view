@@ -5,19 +5,28 @@ var router = express.Router();
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
-  if (logMessages.length >= conf.maxLines) {
-    logMessages.shift()
-  }
   
-  var line = req.body
-  var lineString = ""
-  Object.keys(line).forEach(function(key) {
-    var val = line[key]
-    lineString += "[" + key + ":" + val + "] "
-  })
+  var lines = req.body
 
-  
-  logMessages.push(lineString)
+  if(!Array.isArray(lines)){
+    lines = [lines]
+  }
+
+  var lineStrings = []
+
+  lines.forEach(function(line){
+    var string = ""
+    Object.keys(line).forEach(function(key) {
+      var val = line[key]
+      string += "[" + key + ":" + val + "] "
+    })
+
+    lineStrings.push(string)
+    if (logMessages.length >= conf.maxLines) {
+      logMessages.shift()
+    }
+    logMessages.push(string)
+  })
 
   fs.readFile('views/modules/line.jade', 'utf8', function (err, data) {
     if (err) {
@@ -25,7 +34,7 @@ router.post('/', function(req, res, next) {
     }
     var fn = jade.compile(data)
     var html = fn({
-      lines: [lineString]
+      lines: lineStrings
     })
     broadcast(html)
   })
