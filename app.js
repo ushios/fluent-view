@@ -16,7 +16,7 @@ var app = express();
 // global
 logMessages = []
 conf        = {
-  "maxLines" : 1000
+  "maxLines" : 50
 }
 
 var server = http.createServer(app);
