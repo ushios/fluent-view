@@ -18,6 +18,8 @@ GetStarted
     $ npm install
     $ node bin/www
 
+Access http://{server-host}:3000
+
 ### fluentd
 
 #### install http plugin
@@ -28,7 +30,7 @@ GetStarted
 
     <store>
         type             http
-        endpoint_url     http://localhost:3000/receive
+        endpoint_url     http://{server-host}:3000/receive
         http_method      post
         serializer       json
     </store>
