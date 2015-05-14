@@ -9,13 +9,7 @@ router.post('/', function(req, res, next) {
     logMessages.shift()
   }
   
-  console.log(req.body)
-
-  var lines = []
-  req.body.forEach(function(line){
-    logMessages.push(line)
-    lines.push(line)
-  })
+  var line = req.body
 
   fs.readFile('views/modules/line.jade', 'utf8', function (err, data) {
     if (err) {
@@ -23,7 +17,7 @@ router.post('/', function(req, res, next) {
     }
     var fn = jade.compile(data)
     var html = fn({
-      lines: lines
+      lines: [lines]
     })
     broadcast(html)
   })
