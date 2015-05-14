@@ -13,20 +13,18 @@ Dependencies
 GetStarted
 ===========
 
-Start server
--------------
+### Start server
 
     $ npm install
     $ node bin/www
 
-fluentd
---------
+### fluentd
 
-### install http plugin
+#### install http plugin
 
     $ `gem install fluent-out-http-buffered
 
-### fluentd.conf
+#### fluentd.conf
 
     <store>
         type             http
