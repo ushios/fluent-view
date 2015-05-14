@@ -7,7 +7,9 @@ router.get('/', function(req, res, next) {
     logMessages.shift()
   }
 
-  logMessages.push('hoge')
+  logMessages.push(['hoge',{'hoga':'fuga'}])
+
+  broadcast('recieved')
 
   res.render('receive', { title: 'Received' });
 });

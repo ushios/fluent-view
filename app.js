@@ -22,7 +22,7 @@ conf        = {
 var server = http.createServer(app);
 var wss = new WebSocketServer({ 
   server: server,
-  port: 8080
+  port: 3001
 })
 
 // ws
@@ -40,6 +40,13 @@ wss.on('connection', function (ws) {
     broadcast(JSON.stringify(message));
   });
 });
+
+// Do broadcast.
+broadcast = function(message) {
+  connections.forEach(function (con, i) {
+    con.send(message);
+  });
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
