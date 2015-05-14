@@ -1,11 +1,10 @@
 extends layout
 
 block scripts
-  script(src='/javascripts/receive.js')
+  script(src='/javascripts/received.js')
 
 block content
   h1= title
   p Welcome to #{title}
-  ul
-    each line in lines
-      li= line
+  ul#list
+    include ./modules/line.jade

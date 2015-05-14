@@ -14,9 +14,9 @@ var receive = require('./routes/receive');
 var app = express();
 
 // global
-logMessages = ['test']
+logMessages = []
 conf        = {
-  "maxLines" : 10000
+  "maxLines" : 1000
 }
 
 var server = http.createServer(app);
