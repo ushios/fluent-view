@@ -9,6 +9,8 @@ router.post('/', function(req, res, next) {
     logMessages.shift()
   }
   
+  console.log(req.body)
+
   var lines = []
   req.body.forEach(function(line){
     logMessages.push(line)
