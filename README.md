@@ -24,7 +24,7 @@ Access http://{server-host}:3000
 
 #### install http plugin
 
-    $ `gem install fluent-out-http-buffered
+    $ gem install fluent-out-http-buffered
 
 #### fluentd.conf
 
